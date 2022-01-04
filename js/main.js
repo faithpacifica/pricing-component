@@ -18,15 +18,35 @@
         const priceEl = document.querySelectorAll(".hidden");
         console.log(priceEl)
 
-        const optionEl = document.querySelectorAll(".header__toggle--option");
+        const optionEl = document.querySelector(".header__toggle--option");
         console.log(optionEl)
+
+        const ElPriceOrigin = document.querySelectorAll(".price-origin");
+        console.log(ElPriceOrigin)
 
         
        if (checkBox.checked){
-        priceEl.style.display = 'block'
-        optionEl.classList.add(' active') 
-    } else {
-        priceEl.style.display = 'none'
+        priceEl.forEach(el =>
+            el.style.display = 'block' 
+        )
+
+        ElPriceOrigin.forEach(el =>
+            el.style.display = 'none' 
+        )
+
+        optionEl.classList.add('active') 
+    } 
+    
+    else {
+
+        priceEl.forEach(el =>
+            el.style.display = 'none' 
+        )
+
+        ElPriceOrigin.forEach(el =>
+            el.style.display = 'block' 
+        )
+
         optionEl.classList.remove(' active') 
   }
 }
