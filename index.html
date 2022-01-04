@@ -20,27 +20,55 @@
 
     <div class="container">
 
+      <!-- Header -->
       <div class="header">
         <h1 class="header__title">Our Pricing</h1>
-        <div class="header__toggle-button">
+
+        <!-- <div class="header__toggle-button">
           <span class="header__toggle-button--option active">Annually</span>
           <label for="toggle" class="header__switcher">
-            <input type="checkbox" id="toggle" class="header__switcher--checkbox">
+            <input type="radio" id="toggle" class="header__switcher--checkbox">
             <div class="toggle__btn"></div>
           </label>
           <span class="header__toggle-button--option">Monthly</span>
+        </div> -->
+
+        <div class="header__toggle">
+          <p class="header__toggle--option active">Annually</p>
+          <label for="toggle" class="header__switch">
+            <input type="checkbox" id="toggle" class="header__switch--checkbox" onclick="myFunction()" checked>
+            <div class="toggle__button"></div>
+          </label>
+          <p class="header__toggle--option ">Monthly</p>
         </div>
+
+
+<!-- 
+        <div class="header__toggle-button">
+          <input class="header__switcher--checkbox" type="radio" id="annual" checked>
+          <input class="header__switcher--checkbox" type="radio" id="monthly">
+
+          <label class="header__toggle-button--option active" for="annual">Annually</label>
+          <label class="header__toggle-button--option" for="annual">Monthly</label>
+            
+          <div>
+            <label class="header__toggle-button--option active" for="annual">Annually</label>
+            <label class="header__toggle-button--option" for="annual">Monthly</label>
+          </div>
+        </div> -->
+
       </div>
 
       <main class="main-content">
         <section class="cards">
+
           <!-- Basic -->
           <div class="card">
             <h2 class="card__title">Basic</h2>
 
             <div class="card__price ">
               <span class="dollar-sign">&dollar;</span>
-              <p class="card__price--amount">199.99</p>
+              <p class="card__price--amount" >199.99</p>
               <p class="card__price--amount hidden">19.99</p>
             </div>
 
@@ -58,8 +86,8 @@
             <h2 class="card__title">Professional</h2>
 
             <div class="card__price">
-              <span class= "dollar-sign">&dollar;</span>
-              <p class="card__price--amount">249.99</p>
+              <span class="dollar-sign">&dollar;</span>
+              <p class="card__price--amount" >249.99</p>
               <p class="card__price--amount hidden">24.99</p>
             </div>
 
@@ -77,8 +105,8 @@
             <h2 class="card__title">Master</h2>
 
             <div class="card__price">
-              <span class= "dollar-sign">&dollar;</span>
-              <p class="card__price--amount">399.99</p>
+              <span class="dollar-sign">&dollar;</span>
+              <p class="card__price--amount" >399.99</p>
               <p class="card__price--amount hidden">39.99</p>
             </div>
 
@@ -95,6 +123,8 @@
     </div>
 
   </div>
+
+
 
   <script src="js/main.js"></script>
 </body>
