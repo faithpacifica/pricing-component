@@ -11,6 +11,10 @@
      box-sizing: inherit;
  }
 
+ a {
+     text-decoration: none;
+ }
+
  body {
      display: flex;
      flex-direction: column;
@@ -19,12 +23,13 @@
      margin: 0;
      padding: 0;
      font-size: 15px;
+     font-weight: bold;
      line-height: 28px;
      color: #6E728E;
      background-color: #F7F7FE;
      background-image: url(../img/bg-left.svg), url(../img/bg-right.svg);
      background-repeat: no-repeat, no-repeat;
-     background-position: bottom -190px left, top right;
+     background-position: bottom -220px left, top right;
  }
 
  img {
@@ -35,27 +40,37 @@
  /* CONTAINER */
  .container {
      width: 100%;
-     max-width: 1440px;
+     max-width: 1050px;
      margin-left: auto;
      margin-right: auto;
  }
 
  .wrapper {
-     padding: 71px 145px;
+     padding: 71px 0;
      text-align: center;
  }
 
+ /* visually hidden */
+ 
+ .visually-hidden {
+     position: absolute;
+     width: 1px;
+     height: 1px;
+     margin: -1px;
+     border: 0;
+     padding: 0;
+     clip: rect(0 0 0 0);
+     overflow: hidden;
+ }
 
  /* Header */
 
  .header {
      text-align: center;
-     width: 340px;
-     margin: 0 auto 64.5px auto;
+     margin-bottom: 64px;
  }
 
  .header__title {
-     font-weight: bold;
      font-size: 32px;
      line-height: 39px;
      margin: 0;
@@ -63,122 +78,73 @@
  }
 
  /* ----------------Toggle Button Styles------------------- */
+
+
  .header__toggle {
-    display: inline-flex;
-    align-items: center;
-}
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
 
-.header__toggle--option {
-    color: rgba(109, 112, 141, 0.5);
-}
+ .header__toggle--label{
+     color: rgba(109, 112, 141, 0.5);
+     cursor:pointer;
+ }
 
-.active {
-    color: #494c5f ;
-    transition: all .2s;
-}
+ .header__toggle--label:hover{
+     color: rgba(109, 112, 141, 1);
+ }
 
-.header__switch {
-    display: inline-block;
-    width: 56px;
-    height: 32px;
-    border-radius: 2.7rem;
+
+ .header__toggle--control {
     position: relative;
-    cursor: pointer;
-    background: linear-gradient(to right, #a3a8f0, #696fdd);
-    margin: 0 2rem;
-    -webkit-tap-highlight-color: transparent;
-}
+     width: 56px;
+     height: 32px;
+     padding: 4px;
+     border-radius: 16px;
+     position: relative;
+     cursor: pointer;
+     background-image: linear-gradient(to right, #a3a8f0, #696fdd);
+     margin: 0 24px;
+ }
 
-.header__switch:hover {
-    background: linear-gradient(to right, rgba(163, 168, 240, 0.5), rgba(105, 111, 221, 0.5));
-}
-
-.header__switch--checkbox {
-    position: absolute;
-    clip: rect(0, 0, 0, 0);
-}
-
-.header__switch--checkbox:checked + .toggle__button::before {
-    margin-left: 20px;
-}
-
-.header__switch--checkbox + .toggle__button::before {
-    content: '';
-    position: absolute;
+ .toggle-control__circle{
     width: 24px;
     height: 24px;
     background-color: white;
     border-radius: 50%;
     box-shadow: 1px 1px 1rem rgb(73 76 95 / 50%);
-    transition: all .2s ease-in-out;
-    left: 0.4rem;
-    top: 50%;
-    transform: translateY(-50%);
-}
- /* ---------------unnecessary--------------------- */
- .header__toggle-button {
-     display: inline-flex;
-     justify-content: center;
+    margin-right: auto;
+    transition: margin 0.3s ease;
  }
 
- .header__toggle-button--option {
-     font-weight: bold;
-     opacity: 0.5;
- }
 
- .active {
-     color: #494c5f;
-     transition: all 0.2s;
- }
-
- .header__switcher {
-     display: inline-block;
-     height: 32px;
-     position: relative;
-     cursor: pointer;
-     width: 56px;
-     margin: 0 24px;
-     padding: 4px 5px;
-     background-image: linear-gradient(135deg, #A2A7F0 0%, #696EDD 100%);
-     border-radius: 16px;
- }
-
- .header__switcher:hover {
-     background-image: linear-gradient(to right, rgba(163, 168, 240, 0.5), rgba(105, 111, 221, 0.5));
- }
-
- .header__switcher--checkbox {
-     padding: 0;
-     margin: 0;
+ .toggle-control__annual, 
+ .toggle-control__monthly{
      position: absolute;
-     /* visibility: hidden; */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
  }
 
- .header__switcher--checkbox+.toggle__btn::before {
-     content: '';
-     position: absolute;
-     width: 24px;
-     height: 24px;
-     border-radius: 50%;
-     background-color: #fff;
-     box-shadow: 1px 1px 1rem rgb(73 76 95 / 50%);
-     transition: all 0.2s ease-in-out;
-     left: 0.4rem;
-     top: 50%;
-     transform: translateY(-50%);
+ 
+ .header__toggle--annual:checked ~ .toggle-control .toggle-control__monthly,
+ .header__toggle--monthly:checked ~ .toggle-control .toggle-control__annual{
+    z-index: 5;
  }
 
- .header__switcher--checkbox:checked+.toggle__btn::before {
-     margin-left: 22px;
+ .header__toggle--monthly:checked ~ .toggle-control .toggle-control__circle {
+    margin-left: 24px;
  }
-/* -------------------------------------- */
-
 
 
  /* MAIN-CONTENT */
 
  .main-content {
      flex-grow: 1;
+     width: 100%;
  }
 
  .cards {
@@ -188,25 +154,47 @@
  }
 
  .card {
-     width: 350px;
+     flex-grow: 1;
+     max-width: 350px;
+     text-align: center;
      padding: 31px;
      background-color: #FFFFFF;
      box-shadow: 0px 20px 40px rgba(212, 210, 244, 0.5);
+ }
+
+ .card:first-child {
      border-radius: 10px 0px 0px 10px;
+     /* TODO:not working */
  }
 
- .card:hover .card__button {
-     background-color: #FFFFFF;
-     border: 1px solid #6D72DE;
-     color: #6D72DE;
-     background-image: none;
- }
-
- .card:nth-child(3) {
+ .card:last-child {
      border-radius: 0px 10px 10px 0px;
  }
 
+ .card__best {
+     background-color: #FFFFFF;
+     background-image: linear-gradient(135.06deg, #A2A7F0 -0.05%, #696EDD 100.05%);
+     box-shadow: 0px 20px 40px rgba(212, 210, 244, 0.5);
+     border-radius: 10px;
+     padding: 55px 31px;
+     color: #fff;
+ }
+
+ .card__best .card__details {
+     border-top: 1px solid rgba(255, 255, 255, 0.25);
+ }
+
+ .card__best .dollar-sign,
+ .card__best .card__price {
+     color: #fff;
+ }
+
+ .card__best .card__details--item {
+     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+ }
+
  .card__title {
+     font-style: 18px;
      font-weight: bold;
      margin: 0;
      margin-bottom: 24px;
@@ -216,91 +204,71 @@
      display: flex;
      justify-content: center;
      align-items: center;
+     font-size: 72px;
+     line-height: 71px;
+     letter-spacing: -2.16px;
+     color: #4A4D60;
      padding-bottom: 32px;
-     border-bottom: 1px solid rgba(0, 30, 255, 0.25);
+
  }
 
  .dollar-sign {
      font-weight: bold;
      font-size: 40px;
      line-height: 49px;
-     letter-spacing: -1.2px;
      margin-right: 8px;
-     color: #4A4D60;
- }
 
- .card__price--amount {
-     margin: 0;
-     font-weight: bold;
-     font-size: 72px;
-     line-height: 71px;
-     letter-spacing: -2.16px;
-     color: #4A4D60;
  }
-
- .hidden {
-    display: none;
- }
-
 
  .card__details {
      margin: 0;
      padding: 0;
      list-style: none;
      margin-bottom: 32px;
+     border-top: 1px solid rgba(0, 30, 255, 0.25);
  }
 
  .card__details--item {
-     padding: 12px 0;
+     padding: 12px;
      border-bottom: 1px solid rgba(110, 114, 142, 0.25);
  }
 
- .card:nth-child(2) {
-     background-image: linear-gradient(135.06deg, #A2A7F0 -0.05%, #696EDD 100.05%);
-     box-shadow: 0px 20px 40px rgba(212, 210, 244, 0.5);
-     border-radius: 10px;
-     padding: 54.5px 31px;
-     color: #fff !important;
- }
-
- .card:nth-child(2):hover .card__button {
-     background-image: none;
-     border: 1px solid #FFFFFF;
+ .card__button {
+     display: block;
+     margin: 0;
+     border: none;
+     padding: 14px;
      background-color: transparent;
-     color: #fff;
+     text-transform: uppercase;
+     font-size: 13px;
+     line-height: 16px;
+     letter-spacing: 1.4;
+     color: #FFFFFF;
+     border-radius: 6px;
+     border: 1px solid transparent;
  }
 
- .card:nth-child(2) .card__button {
+ .button-primary {
+     background-color: #fff;
+     background-image: linear-gradient(135deg, #A2A7F0 0%, #696EDD 100%);
+ }
+
+ .button-primary:hover {
+     background-color: #FFFFFF;
+     border: 1px solid #6D72DE;
+     color: #6D72DE;
+     background-image: none;
+ }
+
+
+ .button-white {
      color: #6D72DE;
      background-color: #FFFFFF;
      background-image: none;
  }
 
- .card:nth-child(2) .card__price {
-     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
- }
-
- .card:nth-child(2) .dollar-sign,
- .card:nth-child(2) .card__price--amount {
+ .button-white:hover {
+     background-color: transparent;
      color: #fff;
- }
-
- .card:nth-child(2) .card__details--item {
-     color: #fff;
-     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
- }
-
- .card__button {
-     width: 100%;
-     text-transform: uppercase;
-     font-weight: bold;
-     font-size: 13px;
-     line-height: 16px;
-     letter-spacing: 1.39;
-     color: #FFFFFF;
-     border: none;
-     padding: 14px 0;
-     background-image: linear-gradient(135deg, #A2A7F0 0%, #696EDD 100%);
-     border-radius: 6px;
-     border: 1px solid transparent;
+     border-color: #fff;
  }

@@ -2,129 +2,98 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing component with Toggle</title>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/main.css" />
 
   <!-- Font link -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
   <div class="wrapper">
-
     <div class="container">
-
       <!-- Header -->
       <div class="header">
         <h1 class="header__title">Our Pricing</h1>
 
-        <!-- <div class="header__toggle-button">
-          <span class="header__toggle-button--option active">Annually</span>
-          <label for="toggle" class="header__switcher">
-            <input type="radio" id="toggle" class="header__switcher--checkbox">
-            <div class="toggle__btn"></div>
-          </label>
-          <span class="header__toggle-button--option">Monthly</span>
-        </div> -->
-
-        <div class="header__toggle">
-          <p class="header__toggle--option active">Annually</p>
-          <label for="toggle" class="header__switch">
-            <input type="checkbox" id="toggle" class="header__switch--checkbox" onclick="myFunction()" checked>
-            <div class="toggle__button"></div>
-          </label>
-          <p class="header__toggle--option ">Monthly</p>
-        </div>
-
-
-<!-- 
-        <div class="header__toggle-button">
-          <input class="header__switcher--checkbox" type="radio" id="annual" checked>
-          <input class="header__switcher--checkbox" type="radio" id="monthly">
-
-          <label class="header__toggle-button--option active" for="annual">Annually</label>
-          <label class="header__toggle-button--option" for="annual">Monthly</label>
-            
-          <div>
-            <label class="header__toggle-button--option active" for="annual">Annually</label>
-            <label class="header__toggle-button--option" for="annual">Monthly</label>
+        <form class="pricing-switch" action='#' method="get">
+          <!-- Switch -->
+          <div class="header__toggle">
+            <input class="header__toggle--annual visually-hidden" type="radio" value="annual" name="payment-period"  id="annual-payment-radio">
+            <input class="header__toggle--monthly visually-hidden" type="radio" value="monthly" name="payment-period"  id="monthly-payment-radio" checked>
+          
+            <label class="header__toggle--label" for="annual-payment-radio">Annually</label>
+            <!-- Switch control -->
+            <div class="header__toggle--control toggle-control">
+              <div class="toggle-control__circle"></div>
+              <label class="toggle-control__annual" for="annual-payment-radio"></label>
+              <label class="toggle-control__monthly" for="monthly-payment-radio"></label>
+            </div>
+            <label class="header__toggle--label" for="monthly-payment-radio" >Monthly</label>
           </div>
-        </div> -->
-
+        </form>
       </div>
 
       <main class="main-content">
         <section class="cards">
+          <h2 class="visually-hidden">Pricing</h2>
 
           <!-- Basic -->
-          <div class="card">
-            <h2 class="card__title">Basic</h2>
-
-            <div class="card__price ">
+          <section class="card" data-annual="199.99" data-monthly=" 19.99">
+            <h3 class="card__title">Basic</h3>
+            <div class="card__price">
               <span class="dollar-sign">&dollar;</span>
-              <p class="card__price--amount price-origin" >199.99</p>
-              <p class="card__price--amount hidden">19.99</p>
+                <span class="card__price-value">19.99</span> 
             </div>
-
             <ul class="card__details">
               <li class="card__details--item">500 GB Storage</li>
               <li class="card__details--item">2 User Allowed</li>
               <li class="card__details--item">Send up to 3GB</li>
             </ul>
-
-            <button class="card__button">Learn More</button>
-          </div>
+            <a class="card__button button-primary" href="#">Learn More</a>
+          </section>
 
           <!-- Professional -->
-          <div class="card">
+          <section class="card card__best"  data-annual="249.99" data-monthly=" 29.99">
             <h2 class="card__title">Professional</h2>
-
             <div class="card__price">
               <span class="dollar-sign">&dollar;</span>
-              <p class="card__price--amount price-origin" >249.99</p>
-              <p class="card__price--amount hidden">24.99</p>
+              <span class="card__price-value">29.99</span> 
             </div>
-
             <ul class="card__details">
               <li class="card__details--item">1 TB Storage</li>
               <li class="card__details--item">5 Users Allowed</li>
               <li class="card__details--item">Send up to 10 GB</li>
             </ul>
 
-            <button class=" card__button">Learn More</button>
-          </div>
+            <a class="card__button button-white" href="#">Learn More</a>
+          </section>
 
           <!-- Master -->
-          <div class="card">
-            <h2 class="card__title">Master</h2>
-
+          <section class="card"  data-annual="399.99" data-monthly=" 39.99">
+            <h3 class="card__title">Master</h3>
             <div class="card__price">
               <span class="dollar-sign">&dollar;</span>
-              <p class="card__price--amount price-origin" >399.99</p>
-              <p class="card__price--amount hidden">39.99</p>
+              <span class="card__price-value">39.99</span> 
             </div>
-
             <ul class="card__details">
               <li class="card__details--item">2 TB Storage</li>
               <li class="card__details--item">10 Users Allowed</li>
               <li class="card__details--item">Send up to 20 GB</li>
             </ul>
-
-            <button class="card__button">Learn More</button>
-          </div>
+            <a class="card__button button-primary" href="#">Learn More</a>
+          </section>
         </section>
+
       </main>
     </div>
-
   </div>
-
-
 
   <script src="js/main.js"></script>
 </body>
