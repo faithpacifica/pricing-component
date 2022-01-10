@@ -160,11 +160,7 @@
      padding: 31px;
      background-color: #FFFFFF;
      box-shadow: 0px 20px 40px rgba(212, 210, 244, 0.5);
- }
-
- .card:first-child {
      border-radius: 10px 0px 0px 10px;
-     /* TODO:not working */
  }
 
  .card:last-child {
@@ -209,7 +205,6 @@
      letter-spacing: -2.16px;
      color: #4A4D60;
      padding-bottom: 32px;
-
  }
 
  .dollar-sign {
@@ -259,7 +254,6 @@
      color: #6D72DE;
      background-image: none;
  }
-
 
  .button-white {
      color: #6D72DE;
